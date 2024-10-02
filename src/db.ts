@@ -1,4 +1,4 @@
-
+/*
 export interface User{
     id:number,
     name:string
@@ -15,4 +15,4 @@ const users:User[]=[
 export const getUser=(id:number):User|undefined =>{
     console.log('Function of get user with value '+id.toString());
         return users.find((user)=>user.id===id)
-}
+}*/

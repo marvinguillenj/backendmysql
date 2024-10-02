@@ -2,16 +2,18 @@
 // Import the 'express' module
 import express,{ Request, Response }  from 'express';
 
-import {User,getUser} from './db'
+//import {User,getUser} from './db'
 import { Json } from 'sequelize/types/utils';
 
+import http from 'http';
 // Create an Express application
-const app=express();
+const app  =require('./app');
 // Specify the port number for the server
 const port =7000;
 
-
-app.get('/api',(req:Request,res:Response)=>{
+const server =http.createServer(app);
+/*
+app.get('/apinew',(req:Request,res:Response)=>{
     res.json({
         success:1,
         message: 'This is rest Api working'
@@ -42,14 +44,17 @@ app.get('/',(req:Request,res:Response)=>{
     //Send a response to the client
     res.send('Hello, TypeScript + Node.js + Express Hello Diany!')
 })
-
+*/
 //Version of test api form mysql
 /*app.get('/',(req: any,res: { send: (arg0: string) => void; })=>{
     res.send('Hello this is my first project');
 });
 */
 
+app.get('/', (req: any, res: { send: (arg0: string) => void; }) => {
+    res.send('Hello World!')
+  })
 
-app.listen(port,()=>{
+server.listen(port,()=>{
     console.log(`Server is running on  http://localhost:${port}`);
 });
