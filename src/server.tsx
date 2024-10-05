@@ -6,10 +6,12 @@ import express,{ Request, Response }  from 'express';
 import { Json } from 'sequelize/types/utils';
 
 import http from 'http';
+const app  = require('./app');
+
+const port:number =7000;
 // Create an Express application
-const app  =require('./app');
+//
 // Specify the port number for the server
-const port =7000;
 
 const server =http.createServer(app);
 /*
@@ -50,10 +52,6 @@ app.get('/',(req:Request,res:Response)=>{
     res.send('Hello this is my first project');
 });
 */
-
-app.get('/', (req: any, res: { send: (arg0: string) => void; }) => {
-    res.send('Hello World!')
-  })
 
 server.listen(port,()=>{
     console.log(`Server is running on  http://localhost:${port}`);

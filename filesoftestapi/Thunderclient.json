@@ -1,0 +1,15 @@
+[{
+    "url":"http://localhost:7000/posts"
+}
+,
+{
+    "message": "Post created succefully",
+    "post": {
+      "id": 1,
+      "title": "req.body.title",
+      "content": "req.body.content",
+      "userId": 1,
+      "updatedAt": "2024-10-04T14:59:51.455Z",
+      "createdAt": "2024-10-04T14:59:51.455Z"
+    }
+  }]

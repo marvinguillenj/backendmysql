@@ -1,0 +1,25 @@
+GET https://reqres.in/api/users HTTP/1.1
+
+
+###
+POST https://reqres.in/api/users HTTP/1.1
+Content-Type: application/json
+
+{
+    "name":"Test01Levanter",
+    "job":"Developer"
+}
+###
+GET http://localhost:7000/blog HTTP/1.1
+
+###
+POST http://localhost:7000/posts HTTP/1.1
+Content-Type: application/json
+
+{
+    "title" : "req.body.title",
+        "content" : "req.body.content",
+        "imageUrl":"",
+        "categoryId":"2",
+        "userId":1
+}
