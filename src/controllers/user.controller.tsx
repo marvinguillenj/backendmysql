@@ -82,7 +82,7 @@ function login(req: Request, res: Response) {
                         const jwtoken = jwt.sign({
                             email:user.email,
                             userId:user.Id
-                        },'secret',function(err: any,token: any){
+                        },process.env.JWT_KEY,function(err: any,token: any){
                             res.status(201).json({
                                 message: "User Authentication succefully",
                                 token:token 
