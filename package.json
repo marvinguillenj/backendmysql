@@ -17,6 +17,7 @@
     "axios": "^1.7.7",
     "body-parser": "^1.20.3",
     "express": "^4.21.0",
+    "fastest-validator": "^1.19.0",
     "mysql2": "^3.11.3",
     "sequelize": "^6.37.3",
     "sqlite3": "^5.1.7"

@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express';
+import Validator from 'fastest-validator';
 /*function index(req: Request, res: Response){
 
     const posts="Post List";
@@ -17,6 +18,22 @@ function save(req: Request, res: Response) {
         categoryId: req.body.categoryId,
         userId: 1
     }
+    const schema ={
+        title:{type:"string",optional:false,max:"100"},
+        content:{type:"string",optional:false,max:"500"},
+        categoryId:{type:"number",optional:false}
+
+    }
+    const v=new Validator();
+    const validationResponse=v.validate(post,schema);
+    if(validationResponse!==true){
+    
+        return res.status(400).json({
+            message: "Validation failed",
+            error: validationResponse
+        });
+       
+    }
     models.Post.create(post).then((result: any) => {
         res.status(201).json({
             message: "Post created succefully",
@@ -29,6 +46,7 @@ function save(req: Request, res: Response) {
         });
 
     });
+
 }
 function show(req:Request,res:Response){
     const id = req.params.id;
@@ -76,6 +94,22 @@ function update(req:Request,res:Response){
         imageUrl: req.body.imageUrl,
         categoryId: req.body.categoryId,
       
+    }
+    const schema ={
+        title:{type:"string",optional:false,max:"100"},
+        content:{type:"string",optional:false,max:"500"},
+        categoryId:{type:"number",optional:false}
+
+    }
+    const v=new Validator();
+    const validationResponse=v.validate(updatePost,schema);
+    if(validationResponse!==true){
+    
+        return res.status(400).json({
+            message: "Validation failed",
+            error: validationResponse
+        });
+       
     }
     const userId=1;
 
