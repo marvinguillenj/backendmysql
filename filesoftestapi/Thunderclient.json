@@ -12,4 +12,12 @@
       "updatedAt": "2024-10-04T14:59:51.455Z",
       "createdAt": "2024-10-04T14:59:51.455Z"
     }
-  }]
+  },
+  {
+    "name": "user.test",
+    "email": "user.test01@grupoklevanter.com",
+    "password": "test01password"
+  }
+
+]
+

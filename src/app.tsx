@@ -13,13 +13,13 @@ const userRoute=require("./routes/users");
 //const userSysRoute=require("./routes/usersys");
 
 app.use(bodyParser.json());
-/*
+
 app.get('/', (req: Request, res: Response) => {
-    res.send('Hello World!')
+    res.send('Hello World User Test01!')
   })
 
 
-*/
+
   app.get('/blog', (req: Request, res: Response) => {
     res.send('Hello blog!')
   })

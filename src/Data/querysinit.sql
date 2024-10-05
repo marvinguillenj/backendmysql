@@ -14,3 +14,4 @@ select * from sakila.actor;
 
 
  SELECT * FROM `database_development`.`posts` LIMIT 1000;
+ select *  FROM `database_development`.`users` LIMIT 1000;
