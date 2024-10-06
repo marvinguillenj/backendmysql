@@ -78,10 +78,12 @@ function login(req: Request, res: Response) {
                 }); 
             }else{
                 bcryptjs.compare(req.body.password,user.password,function(err: any,result: any){
+                  //  console.log("This is the user from the table user");
+                  //  console.log(user);
                     if(result){
                         const jwtoken = jwt.sign({
                             email:user.email,
-                            userId:user.Id
+                            userId:user.id
                         },process.env.JWT_KEY,function(err: any,token: any){
                             res.status(201).json({
                                 message: "User Authentication succefully",

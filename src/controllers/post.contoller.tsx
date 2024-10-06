@@ -18,6 +18,7 @@ function save(req: any, res: any) {
         categoryId: req.body.categoryId,
         userId: req.userData.userId
     }
+    console.log(req.userData);
     const schema ={
         title:{type:"string",optional:false,max:"100"},
         content:{type:"string",optional:false,max:"500"},
@@ -30,7 +31,8 @@ function save(req: any, res: any) {
     
         return res.status(400).json({
             message: "Validation failed",
-            error: validationResponse
+            error: validationResponse,
+            userId:req.userData.userId
         });
        
     }
@@ -39,12 +41,15 @@ function save(req: any, res: any) {
             models.Post.create(post).then((result: any) => {
                 res.status(201).json({
                     message: "Post created succefully",
-                    post: result
+                    post: result,
+                    
+
                 });
             }).catch((error: any) => {
                 res.status(500).json({
                     message: "Somethig went wrong",
                     error: error
+                    
                 });
         
             });
@@ -60,7 +65,9 @@ function save(req: any, res: any) {
 }
 function show(req:Request,res:Response){
     const id = req.params.id;
-    models.Post.findByPk(id).then((result: any)=> {
+    models.Post.findByPk(id,{
+            include:[models.Category,models.User]
+    }).then((result: any)=> {
            if(result){
             res.status(200).json({ message: "Post found succefully",
                 post: result});

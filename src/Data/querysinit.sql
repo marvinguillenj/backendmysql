@@ -35,3 +35,66 @@ values
   );
   
   SELECT id,address,`userId`,`createdAt`,`updatedAt` FROM addresses;
+
+
+   update 
+    posts 
+  set 
+    userId = NULL
+      
+  where 
+    id in (10)
+  ;
+
+    
+insert into 
+  addresses (
+    
+    address, 
+    `userId`, 
+    `createdAt`, 
+    `updatedAt`
+  )
+values
+  (
+     
+    "San Pedro Sula", 
+    4, 
+    NOW(), 
+    NOW()
+  );
+  
+  SELECT id,address,`userId`,`createdAt`,`updatedAt` FROM addresses;
+  
+  SELECT id,title,content,`imageUrl`,`categoryId`,`userId`,`createdAt`,`updatedAt` FROM posts;
+  
+  SELECT * FROM categories;
+  
+  
+  DELETE FROM sequelizemeta
+  where name ='20241006205826-create-postcategory.js';
+  
+  SELECT id,name,`createdAt`,`updatedAt` FROM categories;
+  
+  SELECT id,title,content,`imageUrl`,`categoryId`,`userId`,`createdAt`,`updatedAt` FROM posts;
+
+   
+  insert into 
+    postcategories (
+      
+      `postId`, 
+      `categoryId`, 
+      `createdAt`, 
+      `updatedAt`
+    )
+  values
+    (
+      
+      20, 
+      3, 
+     NOW(),
+     NOW()
+    );
+
+
+  SELECT id,`postId`,`categoryId`,`createdAt`,`updatedAt` FROM postcategories;

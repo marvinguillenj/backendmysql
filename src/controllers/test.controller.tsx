@@ -1,14 +1,30 @@
 const models = require('../../models');
 
 async function test(req:any, res:any){
-    const user = await models.User.findByPk(4,{
+    //Relation One to One
+    /*const user = await models.User.findByPk(4,{
         include:[models.Address]
     });
     const address = await models.Address.findByPk(1,{
         include:[models.User]
+    });*/
+
+    //Relation One to Many
+    /*const user = await models.User.findByPk(4,{
+        include:[models.Post]
+    });*/
+    //Relation Many to Many
+    const post = await models.Post.findByPk(20
+        ,{
+        include:[models.Category]
+    });
+
+    const category = await models.Category.findByPk(1
+        ,{
+        include:[models.Post]
     });
     res.status(200).json({
-        data:address
+        data:category
     
     })
 }
