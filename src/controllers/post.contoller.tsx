@@ -10,13 +10,13 @@ import Validator from 'fastest-validator';
     });
 }*/
 const models = require('../../models')
-function save(req: Request, res: Response) {
+function save(req: any, res: any) {
     const post = {
         title: req.body.title,
         content: req.body.content,
         imageUrl: req.body.imageUrl,
         categoryId: req.body.categoryId,
-        userId: 1
+        userId: req.userData.userId
     }
     const schema ={
         title:{type:"string",optional:false,max:"100"},
@@ -34,18 +34,28 @@ function save(req: Request, res: Response) {
         });
        
     }
-    models.Post.create(post).then((result: any) => {
-        res.status(201).json({
-            message: "Post created succefully",
-            post: result
-        });
-    }).catch((error: any) => {
-        res.status(500).json({
-            message: "Somethig went wrong",
-            error: error
-        });
-
+    models.Category.findByPk(req.body.categoryId).then((result: null)=>{
+        if(result !== null){
+            models.Post.create(post).then((result: any) => {
+                res.status(201).json({
+                    message: "Post created succefully",
+                    post: result
+                });
+            }).catch((error: any) => {
+                res.status(500).json({
+                    message: "Somethig went wrong",
+                    error: error
+                });
+        
+            });
+        }else{
+            res.status(400).json({
+                message: "Invalid Category ID",
+               
+            });
+        }
     });
+    
 
 }
 function show(req:Request,res:Response){
@@ -86,7 +96,7 @@ function index(req:Request,res:Response){
             })
     });
 }
-function update(req:Request,res:Response){
+function update(req:any,res:any){
     const id = req.params.id;
     const updatePost={
         title: req.body.title,
@@ -111,21 +121,31 @@ function update(req:Request,res:Response){
         });
        
     }
-    const userId=1;
-
-    models.Post.update(updatePost,{where:{id:id,userId:userId}}).then((result: any)=> {
-            res.status(200).json({ message: "Post updated succefully",
-                post: updatePost});
-    }).catch((error: any)=>{
-            res.status(500).json({
-                message: "Somethig went wrong",
-            error: error
-            })
+    const userId=req.userData.userId;
+    models.Category.findByPk(req.body.categoryId).then((result: null)=>{
+        if(result !== null){
+            models.Post.update(updatePost,{where:{id:id,userId:userId}}).then((result: any)=> {
+                res.status(200).json({ message: "Post updated succefully",
+                    post: updatePost});
+        }).catch((error: any)=>{
+                res.status(500).json({
+                    message: "Somethig went wrong",
+                error: error
+                })
+        });
+        }else{
+            res.status(400).json({
+                message: "Invalid Category ID",
+               
+            });
+        }
     });
+   
+    
 }
-function destroy(req:Request,res:Response){
+function destroy(req:any,res:any){
     const id = req.params.id;
-    const userId=1;
+    const userId=req.userData.userId;
 
     models.Post.destroy({where:{id:id,userId:userId}}).then((result: any)=> {
             res.status(200).json({ message: "Post deleted succefully",
