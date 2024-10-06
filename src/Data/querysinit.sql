@@ -16,3 +16,22 @@ select * from sakila.actor;
  SELECT * FROM `database_development`.`posts` LIMIT 1000;
  select *  FROM `database_development`.`users` LIMIT 1000;
  --SELECT * FROM `database_development`.`categories` LIMIT 1000;
+
+ insert into 
+  addresses (
+    
+    address, 
+    `userId`, 
+    `createdAt`, 
+    `updatedAt`
+  )
+values
+  (
+     
+    "San Pedro Sula", 
+    4, 
+    NOW(), 
+    NOW()
+  );
+  
+  SELECT id,address,`userId`,`createdAt`,`updatedAt` FROM addresses;

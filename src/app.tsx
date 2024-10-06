@@ -11,7 +11,7 @@ const commentRoute=require("./routes/comments");
 const postRoute=require("./routes/posts");
 const userRoute=require("./routes/users");
 const imageRoute = require('./routes/images')
-//const userSysRoute=require("./routes/usersys");
+const associationsRoute=require("./routes/associations");
 
 app.use(bodyParser.json());
 
@@ -30,7 +30,7 @@ app.use('/comments',commentRoute);
 app.use('/posts',postRoute);
 app.use('/users' , userRoute);
 app.use('/images' , imageRoute);
-
+app.use('/tests' , associationsRoute);
 //Create an instance of express
 
 
