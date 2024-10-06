@@ -20,6 +20,7 @@
     "express": "^4.21.0",
     "fastest-validator": "^1.19.0",
     "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
     "mysql2": "^3.11.3",
     "nodemon": "^3.1.7",
     "sequelize": "^6.37.3",
@@ -29,6 +30,7 @@
     "@types/express": "^5.0.0",
     "@types/node": "^22.7.4",
     "ts-node": "^10.9.2",
+    "tsx": "^4.19.1",
     "typescript": "^5.6.2"
   }
 }

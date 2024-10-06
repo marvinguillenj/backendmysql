@@ -10,6 +10,7 @@ const app=express();
 const commentRoute=require("./routes/comments");
 const postRoute=require("./routes/posts");
 const userRoute=require("./routes/users");
+const imageRoute = require('./routes/images')
 //const userSysRoute=require("./routes/usersys");
 
 app.use(bodyParser.json());
@@ -24,10 +25,11 @@ app.get('/', (req: Request, res: Response) => {
     res.send('Hello blog!')
   })
 
+app.use('/uploads',express.static('uploads'));
 app.use('/comments',commentRoute);
 app.use('/posts',postRoute);
 app.use('/users' , userRoute);
-//app.use('/user' , userSysRoute);
+app.use('/images' , imageRoute);
 
 //Create an instance of express
 

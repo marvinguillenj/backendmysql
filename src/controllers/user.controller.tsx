@@ -85,7 +85,7 @@ function login(req: Request, res: Response) {
                         },process.env.JWT_KEY,function(err: any,token: any){
                             res.status(201).json({
                                 message: "User Authentication succefully",
-                                token:token 
+                                token : token 
                             });
                         });
                     }else{
