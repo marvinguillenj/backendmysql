@@ -98,3 +98,17 @@ values
 
 
   SELECT id,`postId`,`categoryId`,`createdAt`,`updatedAt` FROM postcategories;
+
+
+  Set-ExecutionPolicy RemoteSigned Policies to execute commands
+sequelize init --force forzar iniciar sequelize
+sequelize model:generate --name Post --attributes title:string, content:text, imageUrl:string, categoryId:integer, userId:integer   comando para migracion
+sequelize db:migrate   migrar tablas
+CREATE SCHEMA `database_development` ; 
+
+sequelize model:generate --name Address --attributes address:string, userId:integer
+sequelize seed:generate --name category-seeder : create seeder
+sequelize seed:generate --name category-seeder : create seeder
+
+sequelize db:seed --seed 20241006040646-category-seeder
+sequelize db:seed:undo --seed 20241006040646-category-seeder

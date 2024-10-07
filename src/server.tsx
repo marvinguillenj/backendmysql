@@ -3,9 +3,11 @@
 import express,{ Request, Response }  from 'express';
 
 //import {User,getUser} from './db'
-import { Json } from 'sequelize/types/utils';
+const dataBase = require('../models');
+
 
 import http from 'http';
+
 const app  = require('./app');
 
 const port:number =7000;
@@ -13,7 +15,13 @@ const port:number =7000;
 //
 // Specify the port number for the server
 
-const server =http.createServer(app);
+dataBase.sequelize.sync().then(()=>{
+    const server =http.createServer(app);
+
+    server.listen(port,()=>{
+        console.log(`Server is running on  http://localhost:${port}`);
+    });
+});
 /*
 app.get('/apinew',(req:Request,res:Response)=>{
     res.json({
@@ -52,7 +60,3 @@ app.get('/',(req:Request,res:Response)=>{
     res.send('Hello this is my first project');
 });
 */
-
-server.listen(port,()=>{
-    console.log(`Server is running on  http://localhost:${port}`);
-});
