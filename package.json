@@ -4,7 +4,7 @@
   "description": "A rest API with Nodejas and Mysql",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon dist/server.js",
+    "start": "nodemon  dist/server.js",
     "build": "tsc"
   },
   "repository": {
@@ -17,6 +17,7 @@
     "axios": "^1.7.7",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
     "express": "^4.21.0",
     "fastest-validator": "^1.19.0",
     "jsonwebtoken": "^9.0.2",
@@ -24,6 +25,7 @@
     "mysql2": "^3.11.3",
     "nodemon": "^3.1.7",
     "sequelize": "^6.37.3",
+    "sequelize-cli": "^6.6.2",
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {

@@ -3,7 +3,7 @@
 import express,{Request,Response} from 'express';
 
 import bodyParser from 'body-parser';
-
+const cors = require("cors");
 const app=express();
 
 
@@ -14,6 +14,7 @@ const imageRoute = require('./routes/images')
 const associationsRoute=require("./routes/associations");
 
 app.use(bodyParser.json());
+app.use(cors());
 
 app.get('/', (req: Request, res: Response) => {
     res.send('Hello World User Test01!')
