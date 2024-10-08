@@ -105,9 +105,22 @@ function login(req: Request, res: Response) {
             }); 
         });
 }
+function index(req:Request,res:Response){
+    
+    models.User.findAll().then((result: any)=> {
+            res.status(200).json({ message: "Users all list",
+                Users: result});
+    }).catch((error: any)=>{
+            res.status(500).json({
+                message: "Somethig went wrong",
+            error: error
+            })
+    });
+}
 
 module.exports = {
     singUp: singUp,
-    login:login
+    login:login,
+    index:index
 
  }

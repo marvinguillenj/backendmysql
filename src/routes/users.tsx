@@ -6,8 +6,9 @@ const router =expres.Router();
 
 router.post("/sing-up",UserController.singUp);
 router.post("/login",UserController.login);
+router.get("/",UserController.index);
 /*router.get("/:id",postsController.show);
-router.get("/",postsController.index);
+
 router.patch("/:id",postsController.update);
 router.delete("/:id",postsController.destroy);*/
 

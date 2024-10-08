@@ -12,7 +12,7 @@ const postRoute=require("./routes/posts");
 const userRoute=require("./routes/users");
 const imageRoute = require('./routes/images')
 const associationsRoute=require("./routes/associations");
-
+const usersPreferenceRoutes=require("./routes/userspreferences")
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -32,6 +32,7 @@ app.use('/posts',postRoute);
 app.use('/users' , userRoute);
 app.use('/images' , imageRoute);
 app.use('/tests' , associationsRoute);
+app.use('/userspreference',usersPreferenceRoutes);
 //Create an instance of express
 
 
