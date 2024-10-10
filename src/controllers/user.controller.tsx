@@ -118,9 +118,38 @@ function index(req:Request,res:Response){
     });
 }
 
+function findbyemail(req: Request, res: Response) {
+    models.User.findOne({where:{email:req.body.email}}).then((result: any)=>{
+            const userExport={
+                userid:result.id,
+                name:result.name,
+                email:result.email
+            }
+            if(result){
+                res.status(200).json({
+                    message: "Email already exist!",
+                    data:userExport
+                });
+            }else{
+               
+            }
+    }).catch((error: any)=>{
+        res.status(500).json({
+            message: "Somethig went wrong",
+            error: error
+        }); 
+    })
+
+  
+    
+
+}
+
+
 module.exports = {
     singUp: singUp,
     login:login,
-    index:index
+    index:index,
+    findbyemail:findbyemail
 
  }

@@ -80,7 +80,11 @@ function updatepreferences(req:any, res:any){
             if(result){
                 const usersPreference={
                     bgcolor:req.body.bgcolor,
-                    gender:req.body.gender
+                    gender:req.body.gender,
+                    userId:req.body.userId,
+                    bgcolorsmall:req.body.bgcolorsmall,
+                    isActived:req.body.isActived,
+                    emotionsmessage:req.body.emotionsmessage
                 }
                 models.Userspreference.update(usersPreference,{where:{userId:req.body.userId}})
                 .then((result:any)=>{
@@ -108,10 +112,42 @@ function updatepreferences(req:any, res:any){
             })
         })
 }
+function findoneByUserId(req:any, res:any){
+    models.Userspreference.findOne( {where:{userId:req.body.userId}})
+    .then((result:any)=>{
+        if(result){
+            const ResultusersPreference={
+                bgcolor:result.bgcolor,
+                gender:result.gender,
+                userId:result.userId,
+                bgcolorsmall:result.bgcolorsmall,
+                isActived:result.isActived,
+                emotionsmessage:result.emotionsmessage
+            }
+                res.status(200).json({ message: "User Proference exist ",
+                    userspreference: ResultusersPreference});
+            
+        }else{
+            res.status(500).json({
+                message: "The userid is not exist on the table",
+               // error: error
+            });
+    
+        }
+    })
+    .catch((error:any)=>{
+        res.status(500).json({
+            message: "Something went wrong",
+            error: error    
+        })
+    })
+}
+
 module.exports = {
     
     updatepreferences:updatepreferences,
     listUsersPreferences:listUsersPreferences,
-    save:save
+    save:save,
+    findoneByUserId:findoneByUserId
 
  }
