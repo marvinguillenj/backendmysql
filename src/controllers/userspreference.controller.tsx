@@ -129,7 +129,7 @@ function findoneByUserId(req:any, res:any){
             
         }else{
             res.status(500).json({
-                message: "The userid is not exist on the table",
+                message: "The userid is not exist on the Preferences of the user",
                // error: error
             });
     

@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       User.hasOne(sequelize.define('Address'));
       User.hasOne(sequelize.define('Userspreference'));
       User.hasMany(sequelize.define('Post'));
+      User.belongsToMany(models.BypassQueues,{through:'QueuesOptionUser' })
     }
   }
   User.init({
